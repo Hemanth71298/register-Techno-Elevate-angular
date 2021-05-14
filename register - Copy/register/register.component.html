@@ -1,0 +1,95 @@
+<body>
+  <div class="container">
+    <form action="" [formGroup]="rform">
+     <h1 class="text-center">Registration Form</h1>
+      <div class="form-group">
+        <label for="fn" class="form-label">Name:</label>
+        <input formControlName="fn" type="text" id="fn" class="form-control">
+        <div *ngIf="fn.errors && fn.touched" class="alert alert-danger p-1">
+          <div *ngIf="fn.errors.required">This field is mandatory</div>
+          <div *ngIf="fn.errors.minlength">Atleast 3 Characteres</div>
+          <div *ngIf="fn.errors.pattern">The starting letter should be A-Z</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userName">UserName :</label>
+        <input type="text" id="userName" class="form-control" minlength="3" formControlName="userName">
+      </div>
+      <div class="alert alert-danger p-1" *ngIf="userName.touched && userName.invalid">
+        <div *ngIf="userName.errors.required">This feild is compulsory</div>
+        <div *ngIf="userName.errors.minlength">Minimum of 3 letters</div>
+        <div *ngIf="userName.errors.cannotContainSpace">Cannt contain spaces bcz it is a userName</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Email:</label>
+        <input formControlName="email" type="email" id="email" class="form-control">
+        <div *ngIf="email.errors && email.touched" class="alert alert-danger p-1">
+          <div *ngIf="email.errors.required">This field is mandatory</div>
+          <div *ngIf="email.errors.minlength">This field reruires min 5 chars</div>
+          <div *ngIf="email.errors.pattern">match the mail pattern</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password :</label>
+        <input type="password" id="password" class="form-control" formControlName="password" required>
+        <div *ngIf="password.errors && password.touched" class="alert alert-danger">
+          <div *ngIf="password.errors.required">This field is mandatory</div>
+          <div *ngIf="password.errors.pattern">Must contain at least one number and one uppercase and
+            lowercase
+            letter, and at least 8 or more characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirm">Confirm Password :</label>
+        <input type="password" id="confirm" class="form-control" formControlName="confirm" required>
+        <div *ngIf="confirm.errors && confirm.touched && confirm.invalid" class="alert alert-danger">
+          <div *ngIf="confirm.errors.required">This field is mandatory</div>
+          <div *ngIf="confirm.errors.passValidator">password did not match</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mb" class="form-label">MobileNo:</label>
+        <input formControlName="mb" type="tel" id="mb" class="form-control">
+        <div *ngIf="mb.errors && mb.touched" class="alert alert-danger p-1">
+          <div *ngIf="mb.errors.required">This field is mandatory</div>
+          <div *ngIf="mb.errors.minlength">Atleast 10 Characteres</div>
+          <div *ngIf="mb.errors.pattern">phone number shold be of 10 digits</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dob" class="form-label">DOB:</label>
+        <input formControlName="dob" type="date" id="dob" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label for="gender" class="form-label">Gender:</label>&nbsp;
+        <input type="radio" name="gender" ><label for="male">Male</label>&nbsp;
+        <input type="radio" name="gender" ><label for="female">Female</label>&nbsp;
+      </div><br>
+      <div class="form-group">
+        <label for="lnk" class="form-label">Languages Known:</label>&nbsp;
+        <input class="ml-5" type="checkbox"><label for="kannada">Kannada</label>&nbsp;
+        <input type="checkbox"><label for="english">English</label>&nbsp;
+        <input type="checkbox"><label for="telugu">Telugu</label>&nbsp;
+        <input type="checkbox"><label for="hindi">Hindi</label>&nbsp;
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea formControlName="address" id="address" cols="15" rows="7" class="form-control"></textarea>
+      </div>
+      <div *ngIf="address.errors && address.touched" class="alert alert-danger">
+        <div *ngIf="address.errors.required">This field is mandatory</div>
+        <div *ngIf="address.errors.minlength">This field requires min 15 chars</div>
+      </div>
+      <div class="form-group btns">
+        <button class="btn btn-success mt-3" [disabled]="rform.invalid"><a class="text-light text-decoration-none"
+            routerLink="/sample">Register</a></button>
+      </div>
+
+
+    </form>
+  </div>
+
+
+</body>
